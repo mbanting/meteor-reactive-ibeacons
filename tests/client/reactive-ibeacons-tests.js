@@ -1,5 +1,5 @@
-// Write your tests here!
-// Here is an example.
-Tinytest.add('example', function (test) {
-  test.equal(true, true);
+// Test to ensure ReactiveBeaconRegion is accessible
+Tinytest.add('ReactiveBeaconRegion exists', function (test) {
+  console.log(ReactiveBeaconRegion);
+  test.isNotUndefined(ReactiveBeaconRegion, "Expected ReactiveBeaconRegion to be defined")
 });

@@ -17,13 +17,13 @@ Package.onUse(function(api) {
     api.versionsFrom('1.1.0.3');
     api.use(['tracker', 'underscore']);
     api.addFiles('lib/reactive-ibeacons.js', ["web.cordova"]);
-    api.export('ReactiveBeaconRegion', 'web.cordova');
+    api.export('ReactiveBeaconRegion', ['web.cordova']);
 
 });
 
 Package.onTest(function(api) {
     api.use(['tinytest', 'mbanting:reactive-ibeacons']);
-    api.addFiles('tests/client/reactive-ibeacons-tests.js', 'web.cordova');
-    api.export('ReactiveBeaconRegion', 'web.cordova');
-
+    api.addFiles('lib/reactive-ibeacons.js', ["client"]); // tests can run on client, make files available
+    api.addFiles('tests/client/reactive-ibeacons-tests.js', 'client');
+    api.export('ReactiveBeaconRegion', 'client');
 });
