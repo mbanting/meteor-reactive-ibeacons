@@ -30,7 +30,7 @@ Tinytest.add('new ReactiveBeaconRegion()', function (test) {
 /**
  * Test areBeaconsUpdated detecting changes in beacon information
  */
-Tinytest.add('ReactiveBeaconRegion.areBeaconsUpdated()', function (test) {
+Tinytest.add('ReactiveBeaconRegion._areBeaconsUpdated()', function (test) {
     var reactiveBeaconRegion = new ReactiveBeaconRegion({identifier:"123", uuid:"123"});
 
     var existingBeacons = [
@@ -40,7 +40,7 @@ Tinytest.add('ReactiveBeaconRegion.areBeaconsUpdated()', function (test) {
 
     // first test with same beacons
     reactiveBeaconRegion.beaconRegion.beacons = existingBeacons;
-    test.isFalse(reactiveBeaconRegion.areBeaconsUpdated(existingBeacons), "Expected beacon comparison to detect same beacons");
+    test.isFalse(reactiveBeaconRegion._areBeaconsUpdated(existingBeacons), "Expected beacon comparison to detect same beacons");
 
     // now test with change to existing beacons and with an additional beacon
     var differentBeacons = [
@@ -54,8 +54,8 @@ Tinytest.add('ReactiveBeaconRegion.areBeaconsUpdated()', function (test) {
         {"minor": 13913, "rssi": -66, "major": 22728, "proximity": "ProximityNear", "accuracy": 0.11, "uuid": "F7826DA6-4FA2-4E98-8024-BC5B71E0893E"} // added
     ];
     reactiveBeaconRegion.beaconRegion.beacons = existingBeacons;
-    test.isTrue(reactiveBeaconRegion.areBeaconsUpdated(differentBeacons), "Expected beacon comparison to detect different beacons");
-    test.isTrue(reactiveBeaconRegion.areBeaconsUpdated(additionalBeacons), "Expected beacon comparison to the new beacon");
+    test.isTrue(reactiveBeaconRegion._areBeaconsUpdated(differentBeacons), "Expected beacon comparison to detect different beacons");
+    test.isTrue(reactiveBeaconRegion._areBeaconsUpdated(additionalBeacons), "Expected beacon comparison to the new beacon");
 });
 
 
