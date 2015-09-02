@@ -15,13 +15,13 @@ Tinytest.add('new ReactiveBeaconRegion()', function (test) {
     test.throws(function(){new ReactiveBeaconRegion({identifier:"123", uuid:1})});
     test.throws(function(){new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:1, minor:"123"})});
     test.throws(function(){new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:"123", minor:1})});
-    test.instanceOf(new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:"123", minor:"123"}), ReactiveBeaconRegion);
-    test.throws(function(){new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:"123", minor:"123"}, 1, true)});
-    test.throws(function(){new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:"123", minor:"123"}, true, 1)});
-    test.instanceOf(new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:"123", minor:"123"}, true, true), ReactiveBeaconRegion);
-    test.instanceOf(new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:"123", minor:"123"}, false, true), ReactiveBeaconRegion);
-    test.instanceOf(new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:"123", minor:"123"}, true, false), ReactiveBeaconRegion);
-    test.instanceOf(new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:"123", minor:"123"}, false, false), ReactiveBeaconRegion);
+    test.instanceOf(new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:123, minor:123}), ReactiveBeaconRegion);
+    test.throws(function(){new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:123, minor:123}, 1, true)});
+    test.throws(function(){new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:123, minor:123}, true, 1)});
+    test.instanceOf(new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:12, minor:23}, true, true), ReactiveBeaconRegion);
+    test.instanceOf(new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:12, minor:23}, false, true), ReactiveBeaconRegion);
+    test.instanceOf(new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:12, minor:23}, true, false), ReactiveBeaconRegion);
+    test.instanceOf(new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:16, minor:23}, false, false), ReactiveBeaconRegion);
 });
 
 // TODO: Test to ensure disable flags don't start ranging / monitoring
@@ -31,7 +31,7 @@ Tinytest.add('new ReactiveBeaconRegion()', function (test) {
  * Test areBeaconsUpdated detecting changes in beacon information
  */
 Tinytest.add('ReactiveBeaconRegion.areBeaconsUpdated()', function (test) {
-    var reactiveBeaconRegion = new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:"123", minor:"123"});
+    var reactiveBeaconRegion = new ReactiveBeaconRegion({identifier:"123", uuid:"123"});
 
     var existingBeacons = [
         {"minor": 13911, "rssi": -65, "major": 22728, "proximity": "ProximityImmediate", "accuracy": 0.12, "uuid": "F7826DA6-4FA2-4E98-8024-BC5B71E0893E"},
@@ -64,7 +64,7 @@ Tinytest.add('ReactiveBeaconRegion.areBeaconsUpdated()', function (test) {
  */
 Tinytest.add('ReactiveBeaconRegion.delegate.didDetermineStateForRegion()', function (test) {
     var inRegion = false;
-    var reactiveBeaconRegion = new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:"123", minor:"123"});
+    var reactiveBeaconRegion = new ReactiveBeaconRegion({identifier:"123", uuid:"123"});
     var computationRanAgain = false;
 
     Tracker.autorun(function(computation) {
@@ -112,7 +112,7 @@ Tinytest.add('ReactiveBeaconRegion.delegate.didDetermineStateForRegion()', funct
  */
 Tinytest.add('ReactiveBeaconRegion.delegate.didRangeBeaconsInRegion()', function (test) {
     var computationRanAgain = false;
-    var reactiveBeaconRegion = new ReactiveBeaconRegion({identifier:"123", uuid:"123", major:"123", minor:"123"});
+    var reactiveBeaconRegion = new ReactiveBeaconRegion({identifier:"123", uuid:"123"});
     Tracker.autorun(function(computation) {
         var beaconRegion = reactiveBeaconRegion.getBeaconRegion();
         if (!computation.firstRun) {
