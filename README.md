@@ -30,7 +30,7 @@ Every iBeacon is designated and broadcasts an identifier composed of
 How you organize and designate these values for your iBeacons is up to you. One suggested approach is to set the `UUID` to the same value for all iBeacons that you want your app to detect. This is because apps can't just detect every iBeacon that is out there. You need to specify which iBeacons it should pick up by specifying the beacon region.
 
 ### Beacon Region
-As mentioned above, the first step is to construct a reactive `ReactiveBeaconRegion` object by specifying the beacon region. This includes an arbitrary `identifier` label value  and the `uuid` (in a string form of 32 hexadecimal digits, split into 5 groups, separated by dashes). This will allow your app to detect all iBeacons with the specified `uuid`, regardless of its `major` or `minor` value. 
+As mentioned above, the first step is to construct a `ReactiveBeaconRegion` object by specifying the beacon region. This includes an arbitrary `identifier` label value  and the `uuid` (in a string form of 32 hexadecimal digits, split into 5 groups, separated by dashes). This will allow your app to detect all iBeacons with the specified `uuid`, regardless of its `major` or `minor` value. 
 ```
 var reactiveBeaconRegion = new ReactiveBeaconRegion({identifier: "beacons on shelf", uuid: "F7826DA1-4FA2-4E97-8022-BC5B71E0893A"});
 ```
@@ -40,7 +40,13 @@ var reactiveBeaconRegion = new ReactiveBeaconRegion({identifier: "beacons on she
 ```
 
 ### Beacon Data
-Once you've instantiated your `ReactiveBeaconRegion` you can call its `getBeaconRegion()`function to get the proximity data for the beacon region. If beacons are detected, it returns a data structure similar to the following:
+Once you've instantiated your `ReactiveBeaconRegion` you can make the following call to get the proximity information for the beacon region. 
+
+```
+var beaconRegion = reactiveBeaconRegion.getBeaconRegion();
+```
+
+If beacons are detected, it function returns a data structure similar to the following:
 ```
 {
     "beaconRegion": {
