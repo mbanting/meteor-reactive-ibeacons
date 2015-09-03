@@ -10,7 +10,7 @@ Turns [Apple iBeacons](https://developer.apple.com/ibeacon/) into reactive data 
 
 ## Description
 
-Hardware can be reactive data sources!
+Hardware can be reactive data sources too!
 
 iBeacons are Bluetooth Low Energy (BLE) hardware devices that enable new location awareness [possibilities](http://blog.mowowstudios.com/2015/02/100-use-cases-examples-ibeacon-technology/) for apps. They can be used to establish a region around an object or location, allowing your Meteor Cordova app to determine when it has entered or left the region (also known as Monitoring), along with an estimation of proximity to a beacon (also known as Ranging). This package turns iBeacons into reactive data sources in your Meteor Cordova app, providing an easy way for you to handle these proximity-related events.
 
