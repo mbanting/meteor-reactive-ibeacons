@@ -10,14 +10,16 @@ Turns [Apple iBeacons](https://developer.apple.com/ibeacon/) into reactive data 
 
 ## Description
 
-Who says reactive data sources need to be software? iBeacons are Bluetooth Low Energy (BLE) hardware devices that enable new location awareness [possibilities](http://blog.mowowstudios.com/2015/02/100-use-cases-examples-ibeacon-technology/) for apps. They can be used to establish a region around an object or location, allowing your Meteor Cordova app to determine when it has entered or left the region (also known as Monitoring), along with an estimation of proximity to a beacon (also known as Ranging). This package turns iBeacons into reactive data sources in your Meteor Cordova app, providing an easy way for you to handle these proximity-related events. 
+Hardware can be reactive data sources!
+
+iBeacons are Bluetooth Low Energy (BLE) hardware devices that enable new location awareness [possibilities](http://blog.mowowstudios.com/2015/02/100-use-cases-examples-ibeacon-technology/) for apps. They can be used to establish a region around an object or location, allowing your Meteor Cordova app to determine when it has entered or left the region (also known as Monitoring), along with an estimation of proximity to a beacon (also known as Ranging). This package turns iBeacons into reactive data sources in your Meteor Cordova app, providing an easy way for you to handle these proximity-related events.
 
 
 ## Compatibility
 This package builds on top Peter Metz's [Cordova iBeacon plugin](https://github.com/petermetz/cordova-plugin-ibeacon), and is therefore compatible with iOS 7+ (using its Core Location framework) and Android (using the [AltBeacon's](http://altbeacon.org/) Android implementation). 
 
 ## Usage
-iBeacons regularly broadcast a signal that is detected by your app, allowing your app to know when a user is in the vicinity of a beacon. To understand how to use this package, you need to have some basic understanding of how iBeacons work. 
+iBeacons broadcast self-contained packets of data in set intervals for detection by your app, allowing your app to know when a user is in the vicinity of a beacon. To understand how to use this package, you need to have some basic understanding of how iBeacons work.
 
 ### iBeacon Basics
 iBeacons regularly broadcast a signal for your app to detect. Included in this signal is the identifier of the iBeacon, and additional proximity information. 
