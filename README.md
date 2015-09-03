@@ -46,7 +46,7 @@ Once you've instantiated your `ReactiveBeaconRegion` you can make the following 
 var beaconRegion = reactiveBeaconRegion.getBeaconRegion();
 ```
 
-If beacons are detected, it function returns a data structure similar to the following:
+If beacons are detected, its function returns a data structure similar to the following:
 ```
 {
     "beaconRegion": {
