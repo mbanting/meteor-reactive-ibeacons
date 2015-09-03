@@ -60,7 +60,7 @@ If beacons are detected, this function returns a data structure similar to the f
             "major": 5,
             "proximity": "ProximityImmediate",
             "accuracy": 0.10,
-            "uuid": "F7826DA6-4FA2-4E98-8024-BC5B71E0893E"
+            "uuid": "F7826DA1-4FA2-4E97-8022-BC5B71E0893A"
         },
         {
             "minor": 26,
@@ -68,7 +68,7 @@ If beacons are detected, this function returns a data structure similar to the f
             "major": 5,
             "proximity": "ProximityNear",
             "accuracy": 0.12,
-            "uuid": "F7826DA6-4FA2-4E98-8024-BC5B71E0893E"
+            "uuid": "F7826DA1-4FA2-4E97-8022-BC5B71E0893A"
         }
     ],
     "inRegion": true
