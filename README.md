@@ -20,14 +20,14 @@ This package builds on top Peter Metz's [Cordova iBeacon plugin](https://github.
 iBeacons regularly broadcast a signal that is detected by your app, allowing your app to know when a user is in the vicinity of a beacon. To understand how to use this package, you need to have some basic understanding of how iBeacons work. 
 
 ### iBeacon Basics
-iBeacons regularly broadcast a signal that your app can listen for. Included in this signal is the identifier of the iBeacon, and additional proximity information. 
+iBeacons regularly broadcast a signal for your app to detect. Included in this signal is the identifier of the iBeacon, and additional proximity information. 
 
 Every iBeacon is designated and broadcasts an identifier composed of
 - `uuid`: 16 byte identifier, usually expressed as a series of hexadecimal digits separated by dashes, used to differentiate a large group of related beacons.  
 - `major`:  Integer between 0 and 65535, usually used to group a subset of the larger group. 
 - `minor`: Integer between 0 and 65535, usually used to identify an individual beacon 
 
-How you organize and designate these values for your iBeacons is up to you. One suggested approach is to set the `UUID` to the same value for all iBeacons that you want your app to listen out for. This is because apps can't just detect every iBeacon that is out there. You need to specify which iBeacons it should pick up by specifying the beacon region.
+How you organize and designate these values for your iBeacons is up to you. One suggested approach is to set the `UUID` to the same value for all iBeacons that you want your app to detect. This is because apps can't just detect every iBeacon that is out there. You need to specify which iBeacons it should pick up by specifying the beacon region.
 
 ### Beacon Region
 As mentioned above, the first step is to construct a reactive `ReactiveBeaconRegion` object by specifying the beacon region. This includes an arbitrary `identifier` label value  and the `uuid` (in a string form of 32 hexadecimal digits, split into 5 groups, separated by dashes). This will allow your app to detect all iBeacons with the specified `uuid`, regardless of its `major` or `minor` value. 
