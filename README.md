@@ -17,10 +17,10 @@ Who says reactive data sources need to be software? iBeacons are Bluetooth Low E
 This package builds on top Peter Metz's [Cordova iBeacon plugin](https://github.com/petermetz/cordova-plugin-ibeacon), and is therefore compatible with iOS 7+ (using its Core Location framework) and Android (using the [AltBeacon's](http://altbeacon.org/) Android implementation). 
 
 ## Usage
-iBeacons regularly broadcast a signal that is picked up by your app, allowing you to imply the user is near the beacon. To understand how to use this package, you need to have some basic understanding of how iBeacons work. 
+iBeacons regularly broadcast a signal that is detected by your app, allowing your app to know when a user is in the vicinity of a beacon. To understand how to use this package, you need to have some basic understanding of how iBeacons work. 
 
 ### iBeacon Basics
-iBeacons regularly broadcast a signal that your app can listen for. Included in this signal is the identifier of the iBeacon, and additional proximity information. This allows you to imply the user is near the beacon and have your app react accordingly.
+iBeacons regularly broadcast a signal that your app can listen for. Included in this signal is the identifier of the iBeacon, and additional proximity information. 
 
 Every iBeacon is designated and broadcasts an identifier composed of
 - `uuid`: 16 byte identifier, usually expressed as a series of hexadecimal digits separated by dashes, used to differentiate a large group of related beacons.  
