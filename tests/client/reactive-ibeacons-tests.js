@@ -118,7 +118,7 @@ Tinytest.add('ReactiveBeaconRegion.delegate.didRangeBeaconsInRegion()', function
         if (!computation.firstRun) {
             computationRanAgain = true;
         }
-    })
+    });
 
     // simulate beacons being detected
     cordova.plugins.locationManager.getDelegate().didRangeBeaconsInRegion( {
