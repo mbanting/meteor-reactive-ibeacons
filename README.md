@@ -75,7 +75,10 @@ If beacons are detected, this function returns a data structure similar to the f
 }
 ```
 The properties are:
-- `beaconRegion`: The beacon region you specified when creating the `ReactiveBeaconRegion`
+- `identifier`: The identifier you used when creating this `ReactiveBeaconRegion`
+- `uuid`: The `uuid` of the beacons being detected by this `ReactiveBeaconRegion`
+- `major`: If passed in when instantiating the `ReactiveBeaconRegion`, the `major` id of the beacons being detected 
+- `minor`: If passed in when instantiating the `ReactiveBeaconRegion`, the `minor` id of the beacons being detected 
 - `beacons`: An array of beacon information for all currently ranged beacons. Ordered with the closest beacon at the beginning of the array
   - `uuid`: The UUID of the beacon
   - `major`: The major ID of the beacon
@@ -83,7 +86,7 @@ The properties are:
   - `proximity`: The relative distance to the beacon, one of "ProximityImmediate", "ProximityNear", "ProximityFar"
   - `accuracy`: The accuracy of the proximity value, measured in meters from the beacon.
   - `rssi`: The received signal strength of the beacon, measured in decibels.
-- `inRegion`: true if app is in monitored region, false if outside, null if unknown 
+- `inRegion`: true if device crossed into the monitored region, false if the deviced crossed outside the monitored region, null if unknown 
 
 ### Reactivity
 Being a reactive data source, you can use this reactively and respond appropriately to proximity changes.
