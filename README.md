@@ -30,7 +30,7 @@ Every iBeacon is designated and broadcasts an identifier composed of
 How you organize and designate these values for your iBeacons is up to you. One suggested approach is to set the `UUID` to the same value for all iBeacons that you want your app to detect. This is because apps can't just detect every iBeacon that is out there. You need to specify which iBeacons it should pick up by specifying the beacon region.
 
 ### Beacon Region
-As mentioned above, the first step is to construct a `ReactiveBeaconRegion` object by specifying the beacon region. This includes an arbitrary `identifier` label value  and the `uuid` (in a string form of 32 hexadecimal digits, split into 5 groups, separated by dashes). This will allow your app to detect all iBeacons with the specified `uuid`, regardless of its `major` or `minor` value. 
+The first step is to instantiate a `ReactiveBeaconRegion` object by specifying the beacon region, effectively telling your app what beacons to detect. This includes an arbitrary `identifier` label value  and the `uuid` (in a string form of 32 hexadecimal digits, split into 5 groups, separated by dashes). This will allow your app to detect all iBeacons with the specified `uuid`, regardless of its `major` or `minor` value. 
 ```
 var reactiveBeaconRegion = new ReactiveBeaconRegion({identifier: "beacons on shelf", uuid: "F7826DA1-4FA2-4E97-8022-BC5B71E0893A"});
 ```
@@ -49,10 +49,8 @@ var beaconRegion = reactiveBeaconRegion.getBeaconRegion();
 If beacons are detected, this function returns a data structure similar to the following:
 ```
 {
-    "beaconRegion": {
-        "identifier": "beacons on shelf",
-        "uuid": "F7826DA1-4FA2-4E97-8022-BC5B71E0893A"
-    },
+    "identifier": "beacons on shelf",
+    "uuid": "F7826DA1-4FA2-4E97-8022-BC5B71E0893A",
     "beacons": [
         {
             "minor": 25,
