@@ -15,7 +15,7 @@ Cordova.depends({
 
 Package.onUse(function(api) {
     api.versionsFrom('1.1.0.3');
-    api.use(['tracker', 'underscore']);
+    api.use(['check', 'tracker', 'underscore']);
     api.addFiles('lib/reactive-ibeacons.js', ["web.cordova"]);
     api.export('ReactiveBeaconRegion', ['web.cordova']);
 
