@@ -1,7 +1,7 @@
 Package.describe({
   name: 'mbanting:reactive-ibeacons',
   summary: "Turns iBeacons into reactive data sources in your Meteor Cordova apps.",
-  version: '1.0.2',
+  version: '1.0.3',
   git: "https://github.com/mbanting/meteor-reactive-ibeacons"
 });
 
