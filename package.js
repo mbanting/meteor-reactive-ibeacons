@@ -23,7 +23,7 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function(api) {
-    api.use(['tracker']);
+    api.use(['check', 'tracker', 'underscore']);
     api.use(['tinytest', 'mbanting:reactive-ibeacons']);
     api.addFiles(['tests/client/stubs.js', 'lib/reactive-ibeacons.js'], ["client"]); // tests can run on client, make files available
     api.addFiles('tests/client/reactive-ibeacons-tests.js', 'client');
