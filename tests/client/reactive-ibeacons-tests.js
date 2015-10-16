@@ -153,3 +153,97 @@ Tinytest.add('ReactiveBeaconRegion.delegate.didRangeBeaconsInRegion()', function
     test.isFalse(computationRanAgain, "Expected computation to not run again on same beacon ranging information");
 
 });
+
+
+/**
+ * Test to ensure ReactiveBeaconAdvertiser is accessible
+ */
+Tinytest.add('ReactiveBeaconAdvertiser exists', function (test) {
+  test.isNotUndefined(ReactiveBeaconAdvertiser, "Expected ReactiveBeaconAdvertiser to be defined")
+});
+
+/**
+ * Test to ensure ReactiveBeaconAdvertiser accepts a valid beaconRegion and disable flags
+ */
+Tinytest.add('new ReactiveBeaconAdvertiser()', function (test) {
+    test.instanceOf(new ReactiveBeaconAdvertiser(), ReactiveBeaconAdvertiser);
+});
+
+/**
+ * Test to ensure we get the right response if the plugin can advertise
+ */
+Tinytest.add('ReactiveBeaconAdvertiser canAdvertise', function(test) {
+    var reactiveBeaconAdvertiser = new ReactiveBeaconAdvertiser();
+    reactiveBeaconAdvertiser.canAdvertise( function(result) {
+        test.isFalse(result);
+    });
+    cordova.plugins.locationManager.canAdvertiseStub = true;
+    reactiveBeaconAdvertiser.canAdvertise( function(result) {
+        test.isTrue(result);
+    });
+});
+
+
+/**
+ * Test to ensure we get the right response if the plugin is advertising 
+ */
+Tinytest.add('ReactiveBeaconAdvertiser isAdvertising', function(test) {
+    var reactiveBeaconAdvertiser = new ReactiveBeaconAdvertiser();
+    reactiveBeaconAdvertiser.isAdvertising( function(result) {
+        test.isFalse(result);
+    });
+    cordova.plugins.locationManager.isAdvertisingStub = true;
+    reactiveBeaconAdvertiser.isAdvertising( function(result) {
+        test.isTrue(result);
+    });
+});
+
+
+/**
+ * Start advertising and ensure that the callback tells us we're advertising 
+ */
+Tinytest.add('ReactiveBeaconAdvertiser startAdvertising', function(test) {
+    cordova.plugins.locationManager.isAdvertisingStub = false;
+    cordova.plugins.locationManager.canAdvertiseStub = true;
+    var reactiveBeaconAdvertiser = new ReactiveBeaconAdvertiser();
+    reactiveBeaconAdvertiser.startAdvertising( 
+        "4493DE05-A461-406E-9CC0-C3EEF370C94F", //uuid
+        "Liam's Beacon", //identifier
+        1000, //major
+        2000, //minor
+        // we're not testing the actual data structure returned by the plugin here,
+        // just whether we get the same values we put in
+        function(pluginResult) {
+            test.isNotNull(pluginResult);
+            test.isNotNull(pluginResult.region);
+            test.equal(pluginResult.region.uuid, "4493DE05-A461-406E-9CC0-C3EEF370C94F");
+            test.equal(pluginResult.region.major, 1000);
+            test.equal(pluginResult.region.minor, 2000);
+        }, 
+        function(pluginResult) {}
+    );
+    reactiveBeaconAdvertiser.isAdvertising( function(result) {
+        test.isTrue(result);
+    });
+});
+
+
+/**
+ * Try to start advertising when it's not supported and fail
+ */
+Tinytest.add('ReactiveBeaconAdvertiser failAdvertising', function(test) {
+    cordova.plugins.locationManager.isAdvertisingStub = false;
+    cordova.plugins.locationManager.canAdvertiseStub = false;
+    var reactiveBeaconAdvertiser = new ReactiveBeaconAdvertiser();
+    reactiveBeaconAdvertiser.startAdvertising( 
+        "4493DE05-A461-406E-9CC0-C3EEF370C94F", //uuid
+        "Liam's Beacon", //identifier
+        1000, //major
+        2000, //minor
+        function(pluginResult) {}, 
+        function(pluginResult) {}
+    );
+    reactiveBeaconAdvertiser.isAdvertising( function(result) {
+        test.isFalse(result);
+    });
+});
