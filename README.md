@@ -105,23 +105,23 @@ Having your app detect iBeacons requires it to have access to your user's locati
 As mentioned above, detecting and gathering iBeacon data is done via a combination of _monitoring_ and _ranging_. Monitoring a region enables your app to know when a device enters or exits the range of beacons defined by the region, updating the `inRegion` property. Ranging is more granular. It updates the list of beacons and their information in the `beacons` array. Ranging works only when the user is actively using your application (the app is in the foreground). However, monitoring works even if the app is asleep in the background. iOS and Android will wake up your app and give it a short amount of time (5-10 seconds) to handle the event with code that doesn't require a UI (for example updating application state, calling a web service, or sending a local notification). 
 
 ## Advertising
-You can also have the device advertise itself as a beacon. Currently advertising is only supported on iOS. To get the advertiser and check whether your device supports advertising:
+You can also have the device advertise itself as a beacon. Currently advertising is only supported on iOS. To check whether your device supports advertising:
 ```
-const advertiser = new ReactiveBeaconAdvertiser();
-advertiser.canAdvertise( function(result) {
+reactiveBeaconRegion.canAdvertise( function(result) {
     if (result) console.log("Hot dog, we can advertise!");
 });
 ```
+
 To find out if you're already advertising:
 ```
-advertiser.isAdvertising( function(result) {
+reactiveBeaconRegion.isAdvertising( function(result) {
     if (result) console.log("Advertising now.");
 });
-
 ```
+
 To start advertising:
 ```
-advertiser.startAdvertising(
+reactiveBeaconRegion.startAdvertising(
     "4493DE05-A461-406E-9CC0-C3EEF370C94F", //uuid
     "Liam's Beacon", //identifier
     1000, //major
@@ -136,6 +136,7 @@ advertiser.startAdvertising(
     }
 );
 ```
+
 To stop advertising:
 ```
 advertiser.stopAdvertising();
