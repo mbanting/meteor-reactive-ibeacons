@@ -18,7 +18,6 @@ Package.onUse(function(api) {
     api.use(['check', 'tracker', 'underscore']);
     api.addFiles('lib/reactive-ibeacons.js', ["web.cordova"]);
     api.export('ReactiveBeaconRegion', ['web.cordova']);
-    api.export('ReactiveBeaconAdvertiser', ['web.cordova']);
 
 });
 
@@ -28,5 +27,4 @@ Package.onTest(function(api) {
     api.addFiles(['tests/client/stubs.js', 'lib/reactive-ibeacons.js'], ["client"]); // tests can run on client, make files available
     api.addFiles('tests/client/reactive-ibeacons-tests.js', 'client');
     api.export('ReactiveBeaconRegion', 'client');
-    api.export('ReactiveBeaconAdvertiser', 'client');
 });
