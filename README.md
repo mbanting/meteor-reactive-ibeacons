@@ -156,6 +156,8 @@ To run this package's unit tests (implemented with TinyTest), type the following
 ```
 meteor test-packages ./
 ```
+## Contributions
+- [@mrlowe](https://github.com/mrlowe): added Advertising functionality
 
 ## Feedback
 If you have any problems, questions, or have general feedback, please feel free to contact me!
